@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-6">
+        {{#each burgers}}
+        <div class="indexFormDiv">
+            <form>
+                <p class="pTag">{{this.id}}. {{this.burger_name}}</p>
+                <input id="devourBurgerInput" type="hidden" value="{{this.id}}" name="burger">
+                <button id="devourBurgerId" type="button" data-devourid="{{this.id}}" class="btn btn-success devourButton">Eat this burger</button>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+    <div class="col-6">
+        {{#each eatenBurgers}}
+        <div class="indexFormDiv">
+            <form>
+                <p class="pTagTrash">{{this.id}}. {{this.burger_name}}</p>
+                <input type="hidden" value="{{this.id}}" name="burger">
+                <button id="trashButtonId" type="button" data-trashid="{{this.id}}" class="btn btn-danger trashButton">Throw away your trash</button>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+</div>

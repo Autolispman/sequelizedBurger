@@ -1,0 +1,46 @@
+body {
+    background-color: #f5f5dc
+}
+
+.burgerDiv {
+    text-align: center;
+}
+
+.burgerImg {
+    width: 250px;
+    height: 200px;
+    margin: 40px 0 0 0
+}
+
+.mainBody {
+    text-align: center;
+}
+
+.indexFormDiv {
+    margin: 40px 0 0 0;
+}
+
+.submitForm {
+    text-align: center;
+    margin: 40px 0 0 0
+}
+
+.pTag {
+    display: inline-block;
+    font-size: 20px;
+    font-family: Arial Black, Georgia, 'Times New Roman', Times, serif
+}
+
+.pTagTrash {
+    display: inline-block;
+    font-size: 20px;
+    opacity: .4;
+}
+
+.trashButton {
+    margin: 0 0 0 20px;
+}
+
+.devourButton {
+    margin: 0 0 0 20px;
+}
