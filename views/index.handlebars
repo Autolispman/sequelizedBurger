@@ -5,7 +5,9 @@
             <form>
                 <p class="pTag">{{this.id}}. {{this.burger_name}}</p>
                 <input id="devourBurgerInput" type="hidden" value="{{this.id}}" name="burger">
-                <button id="devourBurgerId" type="button" data-devourid="{{this.id}}" class="btn btn-success devourButton">Eat this burger</button>
+                <button id="devourBurgerId" type="button" data-devourid="{{this.id}}" class="btn 
+                btn-success devourButton">Eat this burger</button>
+                <p class="pTag">{{this.Customer.customer_name}}</p>
             </form>
         </div>
         {{/each}}
@@ -20,5 +22,26 @@
             </form>
         </div>
         {{/each}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="submitForm">
+            <form id="burgerAddFormId">
+                <input id="burgerInputId" class="orderInput" type="text" name="burger" placeholder="Select or Enter new burger" list="burgerName">
+                <datalist id="burgerName">
+                    {{#each burgerMenu}}
+                    <option value="{{this}}">
+                        {{/each}}
+                </datalist>
+                <input id="nameInputId" class="orderInput" type="text" name="nameInput" placeholder="Select or Enter Customer Name" list="customerName">
+                <datalist id="customerName">
+                    {{#each customers}}
+                    <option value="{{this.customer_name}}">
+                        {{/each}}
+                </datalist>
+                <button id="addBurgerId" type="submit" class="btn btn-primary orderSubmit">Submit</button>
+            </form>
+        </div>
     </div>
 </div>

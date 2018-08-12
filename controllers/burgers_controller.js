@@ -2,11 +2,16 @@ const db = require("../models");
 
 module.exports = function (app) {
     app.get('/', (req, res) => {
-        console.log("came through root route")
-        db.Burger.findAll({}).then(function (data) {
+        db.Burger.findAll({
+            include: [ db.Customer ]
+        }).then(function (data) {
             let avalBurgers = []
             let eatenBurgers = []
+            let allBurgers = []
             for (let i = 0; i < data.length; i++) {
+                if(allBurgers.indexOf(data[i].burger_name) < 0) {
+                    allBurgers.push(data[i].burger_name)
+                }
                 if (data[i].devoured === false) {
                     avalBurgers.push(data[i])
                 }
@@ -14,21 +19,25 @@ module.exports = function (app) {
                     eatenBurgers.push(data[i])
                 }
             }
-            let obj = { burgers: avalBurgers, eatenBurgers: eatenBurgers }
-            res.render("index", obj)
+            db.Customer.findAll({order: ['customer_name']}).then(function (result) {
+                allBurgers.sort()
+                let customers = []
+                for (let i = 0; i < result.length; i++) {
+                    customers.push(result[i])
+                }
+                let obj = { burgers: avalBurgers, eatenBurgers: eatenBurgers, burgerMenu: allBurgers, customers: customers }
+                res.render("index", obj)
+            })
         })
-    });
+    });   
 
-    app.post('/addBurger', (req, res) => {
-        console.log('came through addBurger route')
+    app.post('/addBurger', (req, res) => {        
         db.Burger.create(req.body).then(function (result) {
             res.json(result);
         });
     })
 
-    app.put("/devour/:id", (req, res) => {
-        console.log('came through devour route')
-        console.log(req.params.id)
+    app.put("/devour/:id", (req, res) => {       
         db.Burger.update({
             devoured: true,
         },

@@ -24,6 +24,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 require("./controllers/burgers_controller.js")(app);
+require("./controllers/customer_controller.js")(app);
 
 db.sequelize.sync().then(function () {
     app.listen(PORT, function () {

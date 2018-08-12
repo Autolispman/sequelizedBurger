@@ -2,9 +2,7 @@ $(document).ready(function () {
     //let burgerForm = $("#devourBurgerId")
     $(document).on("click", "#devourBurgerId", function (event) {
         event.preventDefault()
-        console.log("alsdjlas")
         let burgerId = $(this).data('devourid')
-        console.log(burgerId)
 
         $.ajax({
             url: "/devour/" + burgerId,
